@@ -17,6 +17,8 @@
       <v-select
         v-model="search"
         :items = "regions"
+        item-text="regionName"
+        item-value="regionValue"
         label="地域"
       ></v-select>
       <!-- disable-filteringを取りました -->
@@ -112,7 +114,21 @@ export default {
   data(){
     return{
       regions:[
-        '宗谷','石狩','十勝','上川','留萌','オホーツク','根室','釧路','十勝','日高','胆振','渡島','檜山','後志','空知'
+        {regionName:'全て',regionValue:''},
+        {regionName:'宗谷総合振興局管内',regionValue:'宗谷'},
+        {regionName:'石狩振興局管内',regionValue:'石狩'},
+        {regionName:'上川総合振興局管内',regionValue:'上川'},
+        {regionName:'留萌振興局管内',regionValue:'留萌'},
+        {regionName:'オホーツク総合振興局管内',regionValue:'オホーツク'},
+        {regionName:'根室振興局管内',regionValue:'根室'},
+        {regionName:'釧路総合振興局管内',regionValue:'釧路'},
+        {regionName:'日高振興局管内',regionValue:'日高'},
+        {regionName:'十勝総合振興局管内',regionValue:'十勝'},
+        {regionName:'胆振総合振興局管内',regionValue:'胆振'},
+        {regionName:'渡島総合振興局管内',regionValue:'渡島'},
+        {regionName:'檜山振興局管内',regionValue:'檜山'},
+        {regionName:'後志総合振興局管内',regionValue:'後志'},
+        {regionName:'空知総合振興局管内',regionValue:'空知'},
       ]
     }
   },
