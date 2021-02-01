@@ -19,7 +19,12 @@
         :items = "regions"
         item-text="regionName"
         item-value="regionValue"
-        label="地域"
+        label="居住地"
+      ></v-select>
+      <v-select
+        v-model="search"
+        :items = "annDate"
+        label="公表日"
       ></v-select>
       <!-- disable-filteringを取りました -->
       <v-data-table
@@ -184,6 +189,10 @@ export default {
       type: String,
       required: false,
       default: ''
+    },
+    annDate:{
+      type: Object,
+      default: () => {}
     }
   }
 }

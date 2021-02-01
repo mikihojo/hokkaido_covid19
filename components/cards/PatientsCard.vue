@@ -1,6 +1,7 @@
 <template>
   <v-col class="DataCard" cols="12" md="6">
     <data-table
+      :ann-date="arrDate"
       :chart-data="patientsTable"
       :chart-option="{}"
       :date="convertToDateFromData(patients.last_update)"
@@ -39,6 +40,7 @@ export default {
         unit: ''
       },
       patientsTable: {},
+      arrDate: {},
       convertToDateFromData
     }
   },
@@ -52,6 +54,12 @@ export default {
         .$get('/patients.json')
         .then(response => {
           this.patientsTable = formatTable(response.data)
+          // DataTableの絞り込みリスト用の公表日を取得
+          let setDate = new Set();
+          for (const row of this.patientsTable.datasets) {
+            setDate.add(row['公表日']);
+          }
+          this.arrDate = Array.from(setDate).reverse();
           // 陽性患者の属性 ヘッダー翻訳
           for (const header of this.patientsTable.headers) {
             header.text =
